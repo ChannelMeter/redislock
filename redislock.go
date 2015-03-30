@@ -24,7 +24,7 @@ import (
 	"github.com/garyburd/redigo/redis"
 )
 
-const lockTimeout = 10 * time.Minute
+const lockTimeout = 60 * time.Second
 
 var unlockScript = redis.NewScript(1, `
 	if redis.call("get", KEYS[1]) == ARGV[1]
